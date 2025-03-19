@@ -34,10 +34,10 @@ class HttpError extends Error implements APIError {
 
         if (axios.isAxiosError(error)) {
             const backendError = error.response?.data as BackendErrorResponse;
-            status = backendError.status || error.response?.status || 500;
-            name = backendError.name || 'HttpError';
-            message = backendError.detail || defaultMessage;
-            data = backendError.data || {};
+            status = error.response?.status || backendError?.status || 500;
+            name = backendError?.name || 'HttpError';
+            message = backendError?.detail || defaultMessage;
+            data = backendError?.data || {};
             path = error.config?.url || '';
         } else {
             message = error.message;
