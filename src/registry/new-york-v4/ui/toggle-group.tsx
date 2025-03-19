@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/registry/new-york-v4/lib/utils';
 import { toggleVariants } from '@/registry/new-york-v4/ui/toggle';
 import * as ToggleGroupPrimitive from '@radix-ui/react-toggle-group';
 

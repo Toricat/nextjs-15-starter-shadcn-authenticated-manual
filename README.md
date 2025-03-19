@@ -1,10 +1,6 @@
-# Next.js 15 Starter (shadcn) [[LIVE DEMO](https://nextjs-15-starter-shadcn.vercel.app/)]
+# Next.js 15 Starter (shadcn) [[LIVE DEMO](...)]
 
-*This is the Tailwind version for Next.js 15 Starter, you may be interested in other templates too -*
-- [**Next.js 15 Starter Core**](https://github.com/SiddharthaMaity/nextjs-15-starter-core)
-- [**Next.js 15 Starter with Tailwind CSS**](https://github.com/SiddharthaMaity/nextjs-15-starter-tailwind)
-
-Welcome to the **Next.js 15 Starter** repository! This starter template is built with Next.js 15, React 19, TypeScript 5, Tailwind CSS 3, Shadcn UI and comes packed with several powerful tools and configurations to accelerate your project setup and streamline development workflows using VS Code.
+Welcome to the **Next.js 15 Ultimate Starter** repository! This starter frontend is built with Next.js 15, React 19, TypeScript 5, Tailwind CSS 3, Shadcn UI, Authenticate API manual and comes packed with several powerful tools and configurations to accelerate your project setup and streamline development workflows using VS Code.
 
 ![Next.js 15 Starter Shadcn](public/images/screenshot1.png)
 
@@ -19,7 +15,10 @@ Welcome to the **Next.js 15 Starter** repository! This starter template is built
 - **Prettier 3**
 - **Tailwind CSS 4**
 - **Shadcn UI**
+- **Zod**
 - **App Directory**
+- **Authenticate API & page**
+- **Dashboard Admin**
 - **System, Light & Dark Mode**
 - **Next.js Bundle Analyzer**
 - **Dockerfile** with Node.js 22.14.0 (Alpine)
@@ -125,10 +124,37 @@ docker run -p 3000:3000 nextjs-starter-shadcn
 
 [![Open in Glitch](https://img.shields.io/badge/Open%20in-Glitch-blue?logo=glitch)](https://glitch.com/edit/#!/import/github/SiddharthaMaity/nextjs-15-starter-shadcn)
 
+
+### Uninstall shadcn-ui 
+
+If you no longer need to use a specific component of shadcn-ui, you can safely remove it without affecting the rest of the library.
+
+To remove a single component, follow these steps:
+
+1. **Delete the component file**: 
+    Navigate to the registry/new-york-v4 directory and delete the file corresponding to the component you want to remove. For example, if you want to remove the Button component, delete the button.tsx and button.css files.
+2. **Remove unnecessary imports**: 
+    In your code files, remove any imports related to the component you just deleted. For example:
+    ```bash
+    import { Button } from '@/registry/new-york-v4/button'
+    ```
+
+3. **Remove unnecessary usage**:
+    In your code files, remove any usage of the component you just deleted. For example:
+    ```bash
+    <Button>Click me</Button>
+    ```
+4. **Update registry directory**: 
+    Remove the line corresponding to the component you just deleted from the __registry__/index.tsx file. For example:
+    ```bash
+    button: {...}
+    ```
+5. **Delete dependencies**: 
+    Check package.json, if components have dependencies, delete it by command. For example:
+    ```bash
+    npm uninstall @radix-ui/react-navigation-menu
+    ```
+
 ### License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-<p style="text-align: center;"> With ❤️ from 🇮🇳 </p>

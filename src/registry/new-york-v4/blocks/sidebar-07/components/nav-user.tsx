@@ -1,5 +1,6 @@
 'use client';
 
+import { useUser } from '@/context/UserContext';
 import { Avatar, AvatarFallback, AvatarImage } from '@/registry/new-york-v4/ui/avatar';
 import {
     DropdownMenu,
@@ -24,6 +25,11 @@ export function NavUser({
     };
 }) {
     const { isMobile } = useSidebar();
+    const { logout } = useUser();
+
+    const handleLogout = async () => {
+        await logout();
+    };
 
     return (
         <SidebarMenu>
@@ -64,28 +70,28 @@ export function NavUser({
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
                             <DropdownMenuItem>
-                                <Sparkles />
+                                <Sparkles className='mr-2 h-4 w-4' />
                                 Upgrade to Pro
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
                         <DropdownMenuGroup>
                             <DropdownMenuItem>
-                                <BadgeCheck />
+                                <BadgeCheck className='mr-2 h-4 w-4' />
                                 Account
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                                <CreditCard />
+                                <CreditCard className='mr-2 h-4 w-4' />
                                 Billing
                             </DropdownMenuItem>
                             <DropdownMenuItem>
-                                <Bell />
+                                <Bell className='mr-2 h-4 w-4' />
                                 Notifications
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
-                            <LogOut />
+                        <DropdownMenuItem onClick={handleLogout}>
+                            <LogOut className='mr-2 h-4 w-4' />
                             Log out
                         </DropdownMenuItem>
                     </DropdownMenuContent>
