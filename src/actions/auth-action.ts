@@ -1,7 +1,7 @@
 'use server';
 
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+
 
 import {
     LoginAPI,
@@ -114,21 +114,19 @@ export async function SocialAuthAction(provider: string) {
     return response;
 }
 
-export async function logout() {
-    try {
-        // Gọi API logout
-        await LogoutAPI();
-
-        // Xóa các cookies liên quan đến authentication
-        const cookieStore = await cookies();
-        cookieStore.delete('accessToken');
-        cookieStore.delete('refreshToken');
-
-        return { success: true };
-    } catch {
-        return { success: false };
+export async function logoutAction() {
+    const cookieStore = await cookies();
+    const refreshToken = cookieStore.get('refresh_token')?.value;
+    if (!refreshToken) {
+        return { success: false, error: { message: 'No refresh token found' } };
     }
+    const response= await LogoutAPI(refreshToken);
+    cookieStore.delete('access_token');
+    cookieStore.delete('refresh_token');
+
+    return response.success ? { success: true, data: response.data } : { success: false, error: response.error };
 }
+
 
 export async function refreshTokenAction() {
     const cookieStore = await cookies();
